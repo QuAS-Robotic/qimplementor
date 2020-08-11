@@ -7,6 +7,8 @@ import os
 import imutils
 import cv2
 def run(picture,width = 30,hint= "TREE"):
+        global window_flag
+        window_flag = False
         if hint == "CCOMP":
                 method = cv2.RETR_CCOMP
                 method2 = cv2.CHAIN_APPROX_NONE
@@ -40,10 +42,11 @@ def run(picture,width = 30,hint= "TREE"):
         global pixelsPerMetric
         pixelsPerMetric = None
         # loop over the contours individually
-        print("cnts = ",len(cnts))
+
         # for c in cnts:
         mask = np.zeros(image.shape[:2], dtype=image.dtype)
         def show(c):
+                global window_flag
                 # if the contour is not sufficiently large, ignore it
                 if cv2.contourArea(c) < 100:
                         return
@@ -116,9 +119,11 @@ def run(picture,width = 30,hint= "TREE"):
                             0.65, (255, 255, 255), 2)
 
                 # show the output image
-                cv2.namedWindow("Ölçüm Resmi",cv2.WINDOW_NORMAL)
+                if window_flag != True:
+                        cv2.namedWindow("Sonuc Ekrani",cv2.WINDOW_NORMAL)
+                        window_flag = True
                 #cv2.resizeWindow("Ölçüm Resmi")
-                cv2.imshow("Ölçüm Resmi", orig)
+                cv2.imshow("Sonuc Ekrani", orig)
 
                 cv2.waitKey(0)
                 return (round(dimA,2),round(dimB,2))
@@ -134,6 +139,7 @@ def run(picture,width = 30,hint= "TREE"):
                         results.append(show(currentContour))
                 if results[-1] == None:
                         results.pop()
+        window_flag = False
         return results
 def go (picture):
         image = cv2.imread(picture)
@@ -212,5 +218,5 @@ def selection (img =cv2.imread("temp.png")):
                         break
         cv2.destroyAllWindows()
 if __name__ == "__main__":
-        #run(picture=cv2.imread("./temp/Canny.png"),width = 30)
-        selection()
+        run(picture=cv2.imread("./temp/Canny.JPG"),width = 30)
+        #selection()

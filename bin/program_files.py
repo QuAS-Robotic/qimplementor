@@ -5,20 +5,16 @@ import shutil
 class program_files:
     def __init__(self,path=None,hint = None):
         self.main = os.getcwd()
-        os.chdir("gui")
-        os.chdir("img")
+        self.chdir("gui")
+        self.chdir("img")
         self.gui_img = os.getcwd()
         os.chdir(self.main)
-        os.chdir("bin")
+        self.chdir("bin")
         self.bin = os.getcwd()
         self.log = os.path.join(self.bin , "log.txt")
-        try:
-            os.chdir("temp")
-        except:
-            os.mkdir("temp")
-            os.chdir("temp")
+        self.chdir("temp")
         self.temp = os.getcwd()
-        os.chdir(os.path.join(self.main,"db"))
+        self.chdir(os.path.join(self.main,"db"))
         self.db = os.getcwd()
         """      
         try:
@@ -31,6 +27,12 @@ class program_files:
         self.init_paths()
         self.clear_dir(self.temp)
         os.chdir(self.main)
+    def chdir(self,fname):
+        try:
+            os.chdir(fname)
+        except:
+            os.mkdir(fname)
+            os.chdir(fname)
     def init_paths(self):
         return
         self.main = os.getcwd()
@@ -58,7 +60,6 @@ class program_files:
         execute = "cp \""+ str(path) + "\" \""+ str(to_path) +"\""
         os.system(execute)
         """
-        print("pah: ",path,"to_path : ",to_path)
         try:
             shutil.copy(path,to_path)
         except:
