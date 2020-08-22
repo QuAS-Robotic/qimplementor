@@ -74,6 +74,7 @@ def drawCircle(image,roi):
 def selectROI(image,hint = ""):
     image = cv2.imread(image)
     if hint == "one":
+        cv2.namedWindow("roi_win", cv2.WINDOW_NORMAL)
         roi = cv2.selectROI(windowName="roi_win",img=image)
     else:
         roi = cv2.selectROIs(windowName="roi_win",img=image)

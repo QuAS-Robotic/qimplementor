@@ -17,7 +17,7 @@
    <string>ImView0.1_beta</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="gui/resources/toolbar.qrc">
+   <iconset>
     <normaloff>:/window_icon/pics/quas.png</normaloff>:/window_icon/pics/quas.png</iconset>
   </property>
   <property name="styleSheet">
@@ -94,7 +94,7 @@ font: 25 10pt &quot;URW Bookman&quot;;</string>
        <rect>
         <x>240</x>
         <y>190</y>
-        <width>101</width>
+        <width>121</width>
         <height>25</height>
        </rect>
       </property>
@@ -764,7 +764,7 @@ font: 25 10pt &quot;URW Bookman&quot;;</string>
        <rect>
         <x>240</x>
         <y>230</y>
-        <width>101</width>
+        <width>121</width>
         <height>25</height>
        </rect>
       </property>
@@ -908,6 +908,22 @@ font: 25 10pt &quot;URW Bookman&quot;;</string>
        </item>
       </layout>
      </widget>
+     <widget class="QPushButton" name="launch_camera_btn">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>150</y>
+        <width>121</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="whatsThis">
+       <string>donnow</string>
+      </property>
+      <property name="text">
+       <string>Kameraya Bağlan</string>
+      </property>
+     </widget>
      <zorder>layoutWidget</zorder>
      <zorder>filterpic1</zorder>
      <zorder>filterpic2</zorder>
@@ -936,6 +952,7 @@ font: 25 10pt &quot;URW Bookman&quot;;</string>
      <zorder>import_pic</zorder>
      <zorder>import_pic_from_cloud</zorder>
      <zorder>label_2</zorder>
+     <zorder>launch_camera_btn</zorder>
     </widget>
    </widget>
    <widget class="QToolBox" name="toolBox">
@@ -1076,8 +1093,8 @@ font: 25 10pt &quot;URW Bookman&quot;;</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>241</width>
-       <height>517</height>
+       <width>100</width>
+       <height>30</height>
       </rect>
      </property>
      <attribute name="label">
@@ -1408,7 +1425,7 @@ color: rgb(255, 255, 255);</string>
   </action>
   <action name="actionLoadProject">
    <property name="icon">
-    <iconset resource="gui/resources/toolbar.qrc">
+    <iconset>
      <normaloff>:/Toolbar/pics/open.png</normaloff>:/Toolbar/pics/open.png</iconset>
    </property>
    <property name="text">
@@ -1452,7 +1469,7 @@ color: rgb(255, 255, 255);</string>
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset resource="gui/resources/toolbar.qrc">
+    <iconset>
      <normaloff>:/Toolbar/pics/save.png</normaloff>:/Toolbar/pics/save.png</iconset>
    </property>
    <property name="text">

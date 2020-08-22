@@ -14,9 +14,10 @@ global pf
 import os
 from save import save,load_filters
 import measure as measure
+import qcamera
 import json
 import numpy as np
-#from cloud_ import firebase
+from cloud_ import firebase
 pf = program_files("bin/appdb")
 
 class mainmenu_funcs():
@@ -35,12 +36,11 @@ class mainmenu_funcs():
         self.measure_database = analysis.database()
     def load_gui (self,gui,app,wdg,log,proc):
         self.gui = gui
-
         self.log = log
         self.log.gui = self.gui
         self.gui.comboBox.activated[str].connect(self.add_filter_from_panel)
         self.gui.comboBox.setCurrentIndex(0)
-        self.gui.import_pic_from_cloud.hide()
+        #self.gui.import_pic_from_cloud.hide()
         self.gui.import_pic_from_cloud.clicked.connect(self.import_pic_from_cloud)
         self.gui.new_measurement.clicked.connect(self.measure)
         self.gui.filter_options.clicked.connect(lambda: measure_settings(settings = self.settings,gui = self.widget))
@@ -51,7 +51,9 @@ class mainmenu_funcs():
         self.gui.actionLoadProject.triggered.connect(self.load_project)
         self.gui.actionSave.triggered.connect(lambda: save(dbpath = self.save(),
                                                             filterlist = self.mmo.gui_filters.op_filters))
+
         self.gui.settings.clicked.connect(self.emp)
+        self.gui.launch_camera_btn.clicked.connect(qcamera.launch)
         self.gui.rotate_left_button.clicked.connect(lambda: self.rotate(hint = "left"))
         self.gui.rotate_right_button.clicked.connect(lambda: self.rotate(hint = "right"))
         self.gui.actionPRoje.triggered.connect(self.reset_all)
